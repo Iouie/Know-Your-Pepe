@@ -100,6 +100,7 @@ h1 {
   gap: 3px;
   height: 100%;
   width: 100%;
+  perspective: 1000px;
 }
 
 img {
@@ -111,6 +112,8 @@ img {
   position: relative;
   width: 20%;
   height: 20%;
+  transform-style: preserve-3d;
+  transition: transform 0.5s;
 }
 
 .front-face,
@@ -119,4 +122,9 @@ img {
   height: 100%;
   position: absolute;
   border: 2px solid green;
+  backface-visibility: hidden;
+}
+
+.back-face.flip {
+  transform: rotateY(180deg);
 }
