@@ -8,6 +8,7 @@ document.addEventListener("DOMContentLoaded", () => {
   const container = document.querySelector(".gridContainer");
   const musicButton = document.querySelector("#music");
   const playButton = document.querySelector("#play");
+  const mainButtons = document.querySelector(".main-buttons");
   const hsButton = document.querySelector("#highscores");
   const cardArray = [
     {
@@ -46,8 +47,8 @@ document.addEventListener("DOMContentLoaded", () => {
 
   // create board on load
   createBoard();
-
-  // const memoryCard = document.querySelectorAll(".memory-card");
+  container.style.display = "none"; // intialized to display nothing
+  const cards = document.querySelectorAll(".memory-card");
 
   // function to play and pause music
   const toggleMusic = () => {
@@ -118,6 +119,8 @@ document.addEventListener("DOMContentLoaded", () => {
   const disableCards = () => {
     firstCard.removeEventListener("click", flipCard);
     secondCard.removeEventListener("click", flipCard);
+
+    resetBoard();
   };
 
   // function to unflip cards
@@ -127,8 +130,16 @@ document.addEventListener("DOMContentLoaded", () => {
       firstCard.classList.remove("flip");
       secondCard.classList.remove("flip");
 
-      lockBoard = false;
+      resetBoard();
     }, 1500);
+  };
+
+  // function to reset board
+  const resetBoard = () => {
+    hasFlippedCard = false;
+    lockBoard = false;
+    firstCard = null;
+    secondCard = null;
   };
 
   // select all container if a card is selcted call flipCard else do nothing
@@ -138,6 +149,20 @@ document.addEventListener("DOMContentLoaded", () => {
     }
   });
 
+  // shuffle cards  IIFE
+  (function shuffle() {
+    cards.forEach((card) => {
+      let randomPos = Math.floor(Math.random() * 9);
+      card.style.order = randomPos;
+    });
+  })();
+
   // eventlistener to toggle music
   musicButton.addEventListener("click", toggleMusic);
+
+  // eventlistener for play button
+  playButton.addEventListener("click", (e) => {
+    mainButtons.style.display = "none";
+    container.style.display = "flex";
+  });
 });
