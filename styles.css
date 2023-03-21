@@ -8,6 +8,7 @@ body {
   background: url("assets/wallpaper.png") no-repeat center fixed;
   background-size: cover;
   font-family: "Montserrat Alternates", sans-serif;
+  font-family: "Press Start 2P", cursive;
   font-family: "Righteous", cursive;
   display: flex;
   justify-content: center;
@@ -38,7 +39,7 @@ h1 {
   row-gap: 2rem;
   width: 60vw;
   height: 85vh;
-  background: url("assets/pepe-game-bg.jpg");
+  background: url("assets/pepewow.jpg");
   background-size: cover;
 }
 /* CSS */
@@ -48,9 +49,8 @@ h1 {
   border-style: none;
   box-shadow: rgba(0, 0, 0, 0.2) 0 3px 1px -2px, rgba(0, 0, 0, 0.14) 0 2px 2px 0,
     rgba(0, 0, 0, 0.12) 0 1px 5px 0;
-  box-sizing: border-box;
   color: red;
-  background-color: black;
+  background-color: transparent;
   cursor: pointer;
   font-size: 2rem;
   font-weight: 500;
@@ -59,15 +59,19 @@ h1 {
   letter-spacing: 0.0892857em;
   outline: none;
   padding: 0 16px;
+  position: absolute;
+  z-index: 1;
 }
 
 .main-buttons {
   display: flex;
   row-gap: 3rem;
-  height: 65vh;
+  width: 60vw;
+  height: 85vh;
   flex-direction: column;
   justify-content: center;
-  align-items: center;
+  align-content: center;
+  position: absolute;
 }
 
 #play,
@@ -86,4 +90,33 @@ h1 {
   letter-spacing: 0.0892857em;
   outline: none;
   padding: 0 16px;
+}
+
+.gridContainer {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-evenly;
+  align-items: center;
+  gap: 3px;
+  height: 100%;
+  width: 100%;
+}
+
+img {
+  width: 20rem;
+}
+
+.memory-card {
+  border: 2px solid aqua;
+  position: relative;
+  width: 20%;
+  height: 20%;
+}
+
+.front-face,
+.back-face {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  border: 2px solid green;
 }
