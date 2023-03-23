@@ -8,7 +8,7 @@ I love the pepe meme and thought it would be a fun idea to incorporate it into a
 
 ## Tech/framework used
 
-Ex. - JavaScript, DOM, HTML/CSS, LocalStorage
+Ex. - JavaScript, DOM, HTML/CSS, LocalStorage, Flexbox
 
 <b>Built with</b>
 
@@ -16,7 +16,7 @@ Ex. - JavaScript, DOM, HTML/CSS, LocalStorage
 
 ## Features
 
-It's PEPE themed!!
+It's PEPE themed and has great music!
 
 ## Installation
 
