@@ -5,11 +5,14 @@ document.addEventListener("DOMContentLoaded", () => {
   let hasFlippedCard = false;
   let lockBoard = false;
   let firstCard, secondCard;
+  let hsName = "";
+  let matches = 0;
   const container = document.querySelector(".gridContainer");
   const musicButton = document.querySelector("#music");
   const playButton = document.querySelector("#play");
   const mainButtons = document.querySelector(".main-buttons");
   const hsButton = document.querySelector("#highscores");
+  const getName = document.querySelector("#name");
   const cardArray = [
     {
       name: "pepe-chill",
@@ -48,6 +51,7 @@ document.addEventListener("DOMContentLoaded", () => {
   // create board on load
   createBoard();
   container.style.display = "none"; // intialized to display nothing
+  getName.style.display = "none";
   const cards = document.querySelectorAll(".memory-card");
 
   // function to play and pause music
@@ -119,7 +123,7 @@ document.addEventListener("DOMContentLoaded", () => {
   const disableCards = () => {
     firstCard.removeEventListener("click", flipCard);
     secondCard.removeEventListener("click", flipCard);
-
+    matches++;
     resetBoard();
   };
 
@@ -131,7 +135,7 @@ document.addEventListener("DOMContentLoaded", () => {
       secondCard.classList.remove("flip");
 
       resetBoard();
-    }, 1500);
+    }, 1000);
   };
 
   // function to reset board
@@ -163,6 +167,15 @@ document.addEventListener("DOMContentLoaded", () => {
   // eventlistener for play button
   playButton.addEventListener("click", (e) => {
     mainButtons.style.display = "none";
-    container.style.display = "flex";
+    getName.style.display = "flex";
+  });
+
+  // eventlistener to get name if enter is pressed
+  getName.addEventListener("keyup", (e) => {
+    if (e.keyCode === 13) {
+      hsName = getName.value;
+      container.style.display = "flex";
+      getName.style.display = "none";
+    }
   });
 });
