@@ -269,7 +269,7 @@ const displayHighScores = () => {
   mainButtons.style.display = "none";
   backButton.style.display = "flex";
   hsContainer.innerHTML = "";
-
+  hsContainer.innerHTML += "<h2>HIGHSCORES</h2>";
   // get high scores from LocalStorage
   const highScores = JSON.parse(localStorage.getItem("highScores")) || [];
 

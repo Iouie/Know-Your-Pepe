@@ -206,8 +206,9 @@ img {
 }
 
 h2 {
+  color: black;
   text-align: center;
-  font-size: 3rem;
+  font-size: 4rem;
 }
 
 .timerContainer {
@@ -218,8 +219,8 @@ h2 {
 
 li {
   color: #73628a;
-  height: 11vh;
-  font-size: 5rem;
+  height: 8vh;
+  font-size: 3rem;
   list-style-type: none;
   text-align: center;
   border: 2px dotted green;
