@@ -92,6 +92,26 @@ h1 {
   padding: 0 16px;
 }
 
+#main-menu {
+  align-self: center;
+  margin-top: 50%;
+  border-radius: 4px;
+  border-style: none;
+  box-shadow: rgba(0, 0, 0, 0.2) 0 3px 1px -2px, rgba(0, 0, 0, 0.14) 0 2px 2px 0,
+    rgba(0, 0, 0, 0.12) 0 1px 5px 0;
+  color: white;
+  background-color: green;
+  cursor: pointer;
+  font-size: 2rem;
+  font-weight: 500;
+  height: 3rem;
+  letter-spacing: 0.0892857em;
+  outline: none;
+  padding: 0 16px;
+  z-index: 2;
+  position: absolute;
+}
+
 .gridContainer {
   display: flex;
   flex-wrap: wrap;
@@ -138,4 +158,14 @@ img {
   border-radius: 4px;
   font-size: 16px;
   padding: 12px 20px 12px 40px;
+}
+
+#win {
+  height: 85vh;
+  width: 60vw;
+  text-align: center;
+  font-size: 6rem;
+  position: absolute;
+  color: black;
+  background-color: lightgreen;
 }
