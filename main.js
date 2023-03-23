@@ -59,6 +59,7 @@ container.style.display = "none"; // intialized to display nothing
 getName.style.display = "none";
 winText.style.display = "none";
 mmButton.style.display = "none";
+
 const cards = document.querySelectorAll(".memory-card");
 
 // function to play and pause music
@@ -79,7 +80,7 @@ audio.onpause = function () {
 
 // create board
 function createBoard() {
-  for (let i = 0; i < 4; i++) {
+  for (let i = 0; i < cardArray.length; i++) {
     for (let j = 0; j < 2; j++) {
       const card = document.createElement("div");
       card.classList.add("memory-card");
@@ -102,6 +103,7 @@ function createBoard() {
 // flip card
 const flipCard = (e) => {
   if (lockBoard) return;
+
   e.classList.toggle("flip");
 
   if (!hasFlippedCard) {
@@ -139,6 +141,8 @@ const disableCards = () => {
     container.style.display = "none";
     mmButton.style.display = "flex";
     clearInterval(timerIncrease);
+
+    console.log(hsName, formatTime(timer)); // gets name and time to place onto highscores
   }
   resetBoard();
 };
@@ -172,6 +176,7 @@ container.addEventListener("click", (e) => {
 
 // shuffle cards
 function shuffle() {
+  const cards = document.querySelectorAll(".memory-card");
   cards.forEach((card) => {
     let randomPos = Math.floor(Math.random() * 9);
     card.style.order = randomPos;
@@ -194,13 +199,15 @@ playButton.addEventListener("click", (e) => {
 getName.addEventListener("keyup", (e) => {
   e.preventDefault();
   if (e.keyCode === 13) {
-    // function to update timer every second
+    if (getName.value === "") return; // if no name
+    // function to update timer every second after you enter ur name
     timerIncrease = setInterval(() => {
       timer++;
     }, 1000);
+    play;
     setInterval(updateTimer, 1000); // start timer
-    if (getName.value === "") return; // if no name
     hsName = getName.value;
+    hsName.trim(); // in case users want to be cheeky and add white space
     container.style.display = "flex";
     getName.style.display = "none";
   }
