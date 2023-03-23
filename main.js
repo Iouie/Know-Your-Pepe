@@ -1,12 +1,13 @@
 document.addEventListener("DOMContentLoaded", () => {
   //variables
-  let audio = new Audio("assets/music.mp3");
   let isPlaying = false;
   let hasFlippedCard = false;
   let lockBoard = false;
   let firstCard, secondCard;
   let hsName = "";
   let matches = 0;
+  let timer = 0;
+  const audio = new Audio("assets/music.mp3");
   const mainContainer = document.querySelector(".container");
   const container = document.querySelector(".gridContainer");
   const musicButton = document.querySelector("#music");
@@ -16,6 +17,7 @@ document.addEventListener("DOMContentLoaded", () => {
   const mainButtons = document.querySelector(".main-buttons");
   const hsButton = document.querySelector("#highscores");
   const getName = document.querySelector("#name");
+  const timerText = document.querySelector("#timer");
   const cardArray = [
     {
       name: "pepe-chill",
@@ -50,6 +52,11 @@ document.addEventListener("DOMContentLoaded", () => {
       img: "assets/cards/pepe-wave.gif",
     },
   ];
+
+  // function to update timer every second
+  let intervalId = setInterval(() => {
+    timer++;
+  }, 1000);
 
   // create board on load
   createBoard();
@@ -133,8 +140,12 @@ document.addEventListener("DOMContentLoaded", () => {
     // win condition
     if (matches === 8) {
       winText.style.display = "flex";
+      winText.textContent = `YOU MATCHED ALL THE PEPES IN ${formatTime(
+        timer
+      )}!`;
       container.style.display = "none";
       mmButton.style.display = "flex";
+      clearInterval(intervalId); // stop timer
     }
     resetBoard();
   };
@@ -166,13 +177,13 @@ document.addEventListener("DOMContentLoaded", () => {
     }
   });
 
-  // shuffle cards  IIFE
-  (function shuffle() {
+  // shuffle cards
+  function shuffle() {
     cards.forEach((card) => {
       let randomPos = Math.floor(Math.random() * 9);
       card.style.order = randomPos;
     });
-  })();
+  }
 
   // eventlistener to toggle music
   musicButton.addEventListener("click", toggleMusic);
@@ -180,6 +191,7 @@ document.addEventListener("DOMContentLoaded", () => {
   // eventlistener for play button
   playButton.addEventListener("click", (e) => {
     e.preventDefault();
+    shuffle();
     getName.value = "";
     mainButtons.style.display = "none";
     getName.style.display = "flex";
@@ -189,22 +201,36 @@ document.addEventListener("DOMContentLoaded", () => {
   getName.addEventListener("keyup", (e) => {
     e.preventDefault();
     if (e.keyCode === 13) {
-      if (getName.value === "") return;
+      setInterval(updateTimer, 1000); // start timer
+      if (getName.value === "") return; // if no name
       hsName = getName.value;
       container.style.display = "flex";
       getName.style.display = "none";
     }
   });
 
-  // eventlistener to go back to main menu
+  // eventlistener to go back to main menu and reset game
   mmButton.addEventListener("click", () => {
     mainContainer.style.display = "flex";
     mainButtons.style.display = "flex";
     winText.style.display = "none";
+    winText.textContent = "";
     mmButton.style.display = "none";
     resetBoard();
     container.innerHTML = "";
     createBoard();
     matches = 0;
+    timer = 0;
   });
+
+  // formates time to minutes:seconds and updates textcontent
+  function updateTimer() {
+    timerText.textContent = timer;
+  }
+  // format timer
+  const formatTime = (time) => {
+    let minutes = Math.floor(time / 60);
+    let seconds = time % 60;
+    return `${minutes}:${seconds < 10 ? "0" : ""}${seconds}`;
+  };
 });

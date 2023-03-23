@@ -42,6 +42,19 @@ h1 {
   background: url("assets/pepewow.jpg");
   background-size: cover;
 }
+
+.highscores {
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  background: white;
+  justify-content: flex-start;
+  row-gap: 2rem;
+  width: 60vw;
+  height: 85vh;
+  background-color: white;
+  background-size: cover;
+}
 /* CSS */
 #music {
   align-self: flex-end;
@@ -168,4 +181,15 @@ img {
   position: absolute;
   color: black;
   background-color: lightgreen;
+}
+
+h2 {
+  text-align: center;
+  font-size: 3rem;
+}
+
+.timerContainer {
+  display: flex;
+  font-size: 2rem;
+  background-color: white;
 }
