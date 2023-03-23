@@ -84,7 +84,7 @@ audio.onpause = function () {
 
 // create board
 function createBoard() {
-  for (let i = 0; i < cardArray.length; i++) {
+  for (let i = 0; i < 4; i++) {
     for (let j = 0; j < 2; j++) {
       const card = document.createElement("div");
       card.classList.add("memory-card");
@@ -139,7 +139,7 @@ const disableCards = () => {
   matches++;
 
   // win condition
-  if (matches === 8) {
+  if (matches === 4) {
     winText.style.display = "flex";
     winText.textContent = `YOU MATCHED ALL THE PEPES IN ${formatTime(timer)}!`;
     container.style.display = "none";
@@ -253,13 +253,13 @@ const saveHighScore = (name, time) => {
   // sort high scores in descending order
   highScores.sort((a, b) => a.time - b.time);
 
-  // store updated high scores in LocalStorage
-  localStorage.setItem("highScores", JSON.stringify(highScores));
-
   // max the highscores to 5 list
   if (highScores.length > 5) {
-    highScores.splice(highScores.length - 1, 1); // gets rid of lowest score
+    highScores.splice(highScores.length - 1, 1); // gets rid of lowest score if we have more than 5
   }
+
+  // store updated high scores in LocalStorage
+  localStorage.setItem("highScores", JSON.stringify(highScores));
 };
 
 // function for displaying highscore
@@ -277,7 +277,9 @@ const displayHighScores = () => {
   for (let i = 0; i < highScores.length; i++) {
     const score = highScores[i];
     const li = document.createElement("li");
-    li.innerText = `${score.name}: ${score.time}`;
+    score.time < 60
+      ? (li.innerText = `${i + 1}.${score.name}: 0:${score.time}`)
+      : (li.innerText = `${i + 1}.${score.name}: ${formatTime(score.time)}`);
     hsContainer.appendChild(li);
   }
 };

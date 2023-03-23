@@ -217,7 +217,8 @@ h2 {
 }
 
 li {
-  color: green;
+  color: #73628a;
+  height: 11vh;
   font-size: 5rem;
   list-style-type: none;
   text-align: center;
