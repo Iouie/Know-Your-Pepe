@@ -84,7 +84,7 @@ audio.onpause = function () {
 
 // create board
 function createBoard() {
-  for (let i = 0; i < 4; i++) {
+  for (let i = 0; i < cardArray.length; i++) {
     for (let j = 0; j < 2; j++) {
       const card = document.createElement("div");
       card.classList.add("memory-card");
@@ -139,7 +139,7 @@ const disableCards = () => {
   matches++;
 
   // win condition
-  if (matches === 4) {
+  if (matches === 8) {
     winText.style.display = "flex";
     winText.textContent = `YOU MATCHED ALL THE PEPES IN ${formatTime(timer)}!`;
     container.style.display = "none";
