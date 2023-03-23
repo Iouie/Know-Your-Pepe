@@ -20,11 +20,7 @@ It's PEPE themed!!
 
 ## Installation
 
-Provide step by step series of examples and explanations about how to get a development env running.
-
-## Tests
-
-Describe and show how to run the tests with code examples.
+Enter this link onto your URL https://iouie.github.io/Know-Your-Pepe
 
 ## How to use?
 
@@ -32,4 +28,4 @@ If people like your project they’ll want to learn how they can use it. To do s
 
 ## Credits
 
-Give proper credits. This could be a link to any repo which inspired you to build this project, any blogposts or links to people who contrbuted in this project.
+Shoutout to FreeCodeCamp for their some of their memory game code https://www.youtube.com/watch?v=ZniVgo8U7ek!
