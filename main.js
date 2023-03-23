@@ -10,12 +10,14 @@ let timerIncrease;
 const audio = new Audio("assets/music.mp3");
 const mainContainer = document.querySelector(".container");
 const container = document.querySelector(".gridContainer");
+const backButton = document.querySelector("#back");
 const musicButton = document.querySelector("#music");
 const playButton = document.querySelector("#play");
 const winText = document.querySelector("#win");
 const mmButton = document.querySelector("#main-menu");
 const mainButtons = document.querySelector(".main-buttons");
 const hsButton = document.querySelector("#highscores");
+const hsContainer = document.querySelector(".highscores");
 const getName = document.querySelector("#name");
 const timerText = document.querySelector("#timer");
 const cardArray = [
@@ -59,6 +61,8 @@ container.style.display = "none"; // intialized to display nothing
 getName.style.display = "none";
 winText.style.display = "none";
 mmButton.style.display = "none";
+hsContainer.style.display = "none";
+backButton.style.display = "none";
 
 const cards = document.querySelectorAll(".memory-card");
 
@@ -135,14 +139,14 @@ const disableCards = () => {
   matches++;
 
   // win condition
-  if (matches === 4) {
+  if (matches === 8) {
     winText.style.display = "flex";
     winText.textContent = `YOU MATCHED ALL THE PEPES IN ${formatTime(timer)}!`;
     container.style.display = "none";
     mmButton.style.display = "flex";
     clearInterval(timerIncrease);
 
-    console.log(hsName, formatTime(timer)); // gets name and time to place onto highscores
+    saveHighScore(hsName, timer); // store name and time onto local storage
   }
   resetBoard();
 };
@@ -237,3 +241,51 @@ const formatTime = (time) => {
   let seconds = time % 60;
   return `${minutes}:${seconds < 10 ? "0" : ""}${seconds}`;
 };
+
+// function to save highscore to localstorage
+const saveHighScore = (name, time) => {
+  // get existing high scores from LocalStorage or initialize empty array
+  const highScores = JSON.parse(localStorage.getItem("highScores")) || [];
+
+  // add new high score to array
+  highScores.push({ name, time });
+
+  // sort high scores in descending order
+  highScores.sort((a, b) => a.time - b.time);
+
+  // store updated high scores in LocalStorage
+  localStorage.setItem("highScores", JSON.stringify(highScores));
+
+  // max the highscores to 5 list
+  if (highScores.length > 5) {
+    highScores.splice(highScores.length - 1, 1); // gets rid of lowest score
+  }
+};
+
+// function for displaying highscore
+const displayHighScores = () => {
+  // clear existing high scores
+  hsContainer.style.display = "flex";
+  mainButtons.style.display = "none";
+  backButton.style.display = "flex";
+  hsContainer.innerHTML = "";
+
+  // get high scores from LocalStorage
+  const highScores = JSON.parse(localStorage.getItem("highScores")) || [];
+
+  // display high scores
+  for (let i = 0; i < highScores.length; i++) {
+    const score = highScores[i];
+    const li = document.createElement("li");
+    li.innerText = `${score.name}: ${score.time}`;
+    hsContainer.appendChild(li);
+  }
+};
+
+hsButton.addEventListener("click", displayHighScores);
+
+backButton.addEventListener("click", () => {
+  hsContainer.style.display = "none";
+  mainButtons.style.display = "flex";
+  backButton.style.display = "none";
+});

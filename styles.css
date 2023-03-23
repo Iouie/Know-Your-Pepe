@@ -47,12 +47,12 @@ h1 {
   display: flex;
   flex-direction: column;
   flex-wrap: wrap;
-  background: white;
+  background: url("assets/pepe-worship.gif");
   justify-content: flex-start;
+  color: white;
   row-gap: 2rem;
   width: 60vw;
   height: 85vh;
-  background-color: white;
   background-size: cover;
 }
 /* CSS */
@@ -107,7 +107,6 @@ h1 {
 
 #main-menu {
   align-self: center;
-  margin-top: 50%;
   border-radius: 4px;
   border-style: none;
   box-shadow: rgba(0, 0, 0, 0.2) 0 3px 1px -2px, rgba(0, 0, 0, 0.14) 0 2px 2px 0,
@@ -123,6 +122,29 @@ h1 {
   padding: 0 16px;
   z-index: 2;
   position: absolute;
+  right: 45vw;
+  bottom: 10vh;
+}
+
+#back {
+  align-self: center;
+  border-radius: 4px;
+  border-style: none;
+  box-shadow: rgba(0, 0, 0, 0.2) 0 3px 1px -2px, rgba(0, 0, 0, 0.14) 0 2px 2px 0,
+    rgba(0, 0, 0, 0.12) 0 1px 5px 0;
+  color: white;
+  background-color: green;
+  cursor: pointer;
+  font-size: 2rem;
+  font-weight: 500;
+  height: 3rem;
+  letter-spacing: 0.0892857em;
+  outline: none;
+  padding: 0 16px;
+  z-index: 2;
+  position: absolute;
+  right: 45vw;
+  bottom: 7vh;
 }
 
 .gridContainer {
@@ -141,7 +163,7 @@ img {
 }
 
 .memory-card {
-  border: 2px solid aqua;
+  border: 2px solid black;
   position: relative;
   width: 20%;
   height: 20%;
@@ -192,4 +214,12 @@ h2 {
   display: flex;
   font-size: 2rem;
   background-color: white;
+}
+
+li {
+  color: green;
+  font-size: 5rem;
+  list-style-type: none;
+  text-align: center;
+  border: 2px dotted green;
 }
