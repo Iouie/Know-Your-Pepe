@@ -24,7 +24,7 @@ Enter this link onto your URL https://iouie.github.io/Know-Your-Pepe
 
 ## How to use?
 
-If people like your project they’ll want to learn how they can use it. To do so include step by step guide to use your project.
+Click the play button, enter your name and pick 2 cards to see if they match. If you want, you can check the highscores!
 
 ## Credits
 

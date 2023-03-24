@@ -250,7 +250,7 @@ const saveHighScore = (name, time) => {
   // add new high score to array
   highScores.push({ name, time });
 
-  // sort high scores in descending order
+  // sort high scores in ascending order
   highScores.sort((a, b) => a.time - b.time);
 
   // max the highscores to 5 list
