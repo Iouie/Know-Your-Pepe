@@ -144,7 +144,7 @@ const disableCards = () => {
     winText.textContent = `YOU MATCHED ALL THE PEPES IN ${formatTime(timer)}!`;
     container.style.display = "none";
     mmButton.style.display = "flex";
-    clearInterval(timerIncrease);
+    clearInterval(timerIncrease); // stops timer
 
     saveHighScore(hsName, timer); // store name and time onto local storage
   }
